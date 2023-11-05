@@ -1,0 +1,109 @@
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC, LinearSVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+from sklearn import preprocessing
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+
+#**Loading the Dataset**
+#####First we load the dataset and find out the number of columns, rows, null values, etc
+
+
+df = pd.read_csv('emails.csv')
+
+df.info()
+
+df.head()
+
+df.dtypes
+
+##**Cleaning**
+
+df.drop(columns=['Email No.'], inplace=True)
+
+df.isna().sum()
+
+df.describe()
+
+##**Separating the features and the labels**
+
+X=df.iloc[:, :df.shape[1]-1]       #Independent Variables
+y=df.iloc[:, -1]                   #Dependent Variable
+X.shape, y.shape
+
+
+##**Splitting the Dataset**
+
+#### Training and test
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=8)
+
+
+# Standardize feature data if necessary
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+
+
+
+# K-Nearest Neighbors (K-NN) classifier
+knn_classifier = KNeighborsClassifier(n_neighbors=5)
+knn_classifier.fit(X_train, y_train)
+knn_predictions = knn_classifier.predict(X_test)
+
+# Support Vector Machine (SVM) classifier
+svm_classifier = SVC(kernel='linear')
+svm_classifier.fit(X_train, y_train)
+svm_predictions = svm_classifier.predict(X_test)
+
+
+
+
+
+
+# Evaluate the models
+knn_accuracy = accuracy_score(y_test, knn_predictions)
+svm_accuracy = accuracy_score(y_test, svm_predictions)
+
+knn_report = classification_report(y_test, knn_predictions)
+svm_report = classification_report(y_test, svm_predictions)
+
+knn_confusion_matrix = confusion_matrix(y_test, knn_predictions)
+svm_confusion_matrix = confusion_matrix(y_test, svm_predictions)
+
+
+
+
+print("K-Nearest Neighbors (K-NN) Performance:")
+print("Accuracy:", knn_accuracy)
+print("Classification Report:")
+print(knn_report)
+print("Confusion Matrix:")
+print(knn_confusion_matrix)
+
+print("\nSupport Vector Machine (SVM) Performance:")
+print("Accuracy:", svm_accuracy)
+print("Classification Report:")
+print(svm_report)
+print("Confusion Matrix:")
+print(svm_confusion_matrix)
+
+
+
+
+
+
+
+
+
+
+
+
+
