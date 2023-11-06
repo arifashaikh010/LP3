@@ -1,0 +1,34 @@
+Installation of MetaMask and study spending Ether per transactio
+
+https://metamask.io/
+
+download the plugin for your browser
+
+install metamask for crome  [blue button] same page
+
+add to crome [blue button]
+
+add extension
+
+click on extension
+
+create a wallet
+
+agree
+
+set password
+
+remind me later
+
+#Wallet creation successful
+Got it
+
+next
+
+done
+..
+
+(0ETH) [is showing=>right steps followed]
+
+[reference link: https://ethereum-blockchain-developer.com/2022-03-deposit-withdrawals/01-installing-configuring-metamask/]
+
