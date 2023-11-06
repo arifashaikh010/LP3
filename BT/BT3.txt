@@ -1,0 +1,48 @@
+Step 1:
+
+https://remix.ethereum.org/#optimize=false&evmVersion=null&version=soljson-v0.6.6+commit.6c089d02.js&lang=en&runs=200
+
+
+Step 2: Select File Explorer from the left side icons and select Solidity in the environment. Click on New option below the Solidity environment. Enter the file name as ""MyContract.sol"" and Click on the OK button.
+
+Step 3: Enter Code
+
+// Solidity program to 
+// retrieve address and 
+// balance of owner 
+pragma solidity ^0.6.8;	 
+
+// Creating a contract 
+contract MyContract 
+{ 
+	// Private state variable 
+	address private owner; 
+
+	// Defining a constructor 
+	constructor() public{ 
+		owner=msg.sender; 
+	} 
+
+	// Function to get 
+	// address of owner 
+	function getOwner( 
+	) public view returns (address) {	 
+		return owner; 
+	} 
+
+	// Function to return 
+	// current balance of owner 
+	function getBalance( 
+	) public view returns(uint256){ 
+		return owner.balance; 
+	} 
+} 
+
+
+Step 4:  Compile the file MyContract.sol from the Solidity Compiler tab. 
+
+
+Step 5: Deploy the smart contract from the Deploy and Run Transaction tab and you will get the balance and address of the owner.
+
+
+Step 6: The output below shows the address and the balance of the owner.
